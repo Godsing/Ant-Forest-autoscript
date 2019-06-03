@@ -354,7 +354,10 @@ function Ant_forest(automator, unlock) {
       }
       scrollDown();
       sleep(1000);
-    } while (!(descEndsWith("没有更多了").exists() && descEndsWith("没有更多了").findOne(_config.get("timeout_findOne")).bounds().centerY() < device.height));
+    } while ((!descEndsWith("没有更多了").exists()) 
+    || (descEndsWith("没有更多了").findOne(_config.get("timeout_findOne")).bounds().centerY() > 2248));
+    //device.height 无效，总是为0，故自己修改为定值2248（小米8分辨率高度）
+    //while (!(descEndsWith("没有更多了").exists() && descEndsWith("没有更多了").findOne(_config.get("timeout_findOne")).bounds().centerY() < device.height));
   }
   
   // 监听音量上键结束脚本运行
@@ -377,6 +380,8 @@ function Ant_forest(automator, unlock) {
   const _collect_own = function() {
     log("开始收集自己能量");
     if (!textContains("蚂蚁森林").exists()) _start_app();
+    if (textContains("好友排行榜").exists() && descEndsWith("返回").exists()) 
+        descEndsWith("返回").findOne(_config.get("timeout_findOne")).click();
     descEndsWith("背包").waitFor();
     _clear_popup();
     _get_pre_energy();
