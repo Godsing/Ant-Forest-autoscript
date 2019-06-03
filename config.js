@@ -1,11 +1,11 @@
+"ui";
+
 /*
  * @Author: NickHopps
  * @Last Modified by: NickHopps
  * @Last Modified time: 2019-03-12 09:49:26
  * @Description: 配置文件
  */
-
-"ui";
 
 var config = storages.create("ant_forest_config");
 if (!config.contains("color_offset")) {
@@ -16,10 +16,10 @@ if (!config.contains("color_offset")) {
     password: "",
     help_friend: true,
     is_cycle: false,
-    cycle_times: 10,
+    cycle_times: 25,
     delay_unlock: 1000,
     timeout_findOne: 1000,
-    max_collect_wait_time: 20,
+    max_collect_wait_time: 10,
     white_list: []
   };
   // 储存默认配置到本地

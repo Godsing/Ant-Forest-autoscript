@@ -29,8 +29,9 @@ function Ant_forest(automator, unlock) {
   const _start_app = function() {
     app.startActivity({        
       action: "VIEW",
-      data: "alipays://platformapi/startapp?appId=60000002",    
+      data: "alipays://platformapi/startapp?appId=60000002"
     });
+    sleep(1000);
   }
 
   // 关闭提醒弹窗
